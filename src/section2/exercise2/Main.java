@@ -2,6 +2,7 @@ package section2.exercise2;
 
 public class Main {
     public static void main(String[] args) {
+
         Pet pet1 = new Pet("dog", "benny");
         Pet pet2 = new Pet("bunny", "opal", 5, 70, new String[] {"sleep", "play"});
         Human human1 = new Human("Adam", "Sandler", 1945);
