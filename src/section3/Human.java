@@ -1,5 +1,8 @@
 package section3;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 public class Human {
     private String name;
     private String surname;
@@ -76,6 +79,21 @@ public class Human {
     public void setFamily(Family family) {
 
         this.family = family;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Human human = (Human) o;
+        return year == human.year && iq == human.iq && name.equals(human.name) && surname.equals(human.surname) && family.equals(human.family) && Arrays.equals(schedule, human.schedule);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(name, surname, year, iq, family);
+        result = 31 * result + Arrays.hashCode(schedule);
+        return result;
     }
 
     public void describePet() {

@@ -16,6 +16,22 @@ public class Family {
     public Family() {
 
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Family family = (Family) o;
+        return mother.equals(family.mother) && father.equals(family.father) && Arrays.equals(children, family.children) && pet.equals(family.pet);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(mother, father, pet);
+        result = 31 * result + Arrays.hashCode(children);
+        return result;
+    }
+
     public Family(Human mother) {
 
         this.mother = mother;
@@ -116,18 +132,4 @@ public class Family {
                 + Arrays.toString(children) + "', pet='" + pet.toString() + "}";
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass())
-            return false;
-        Family family = (Family) obj;
-        return Objects.equals(mother, family.getMother()) && Objects.equals(father, family.getFather());
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(mother, father);
-    }
 }
